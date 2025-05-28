@@ -20,6 +20,19 @@ class EjemplarController {
         header("Location: index.php?action=ejemplar_index");
     }
 
+    public function edit($codigo) {
+        $e = new Ejemplar();
+        $data = $e->getById($codigo);
+        $libros = $e->getLibros();
+        include __DIR__ . '/../views/ejemplar/edit.php';
+    }
+
+    public function update($codigo, $localizacion, $libro_codigo) {
+        $e = new Ejemplar();
+        $e->update($codigo, $localizacion, $libro_codigo);
+        header("Location: index.php?action=ejemplar_index");
+    }
+
     public function delete($codigo) {
         $e = new Ejemplar();
         $e->delete($codigo);
