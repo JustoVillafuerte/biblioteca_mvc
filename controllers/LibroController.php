@@ -18,6 +18,18 @@ class LibroController {
         header("Location: index.php?action=libro_index");
     }
 
+    public function edit($codigo) {
+        $libro = new Libro();
+        $data = $libro->getById($codigo);
+        include __DIR__ . '/../views/libro/edit.php';
+    }
+
+    public function update($codigo, $titulo, $isbn, $editorial, $paginas) {
+        $libro = new Libro();
+        $libro->update($codigo, $titulo, $isbn, $editorial, $paginas);
+        header("Location: index.php?action=libro_index");
+    }
+
     public function delete($codigo) {
         $libro = new Libro();
         $libro->delete($codigo);

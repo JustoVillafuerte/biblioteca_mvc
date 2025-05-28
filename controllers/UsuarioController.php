@@ -18,6 +18,18 @@ class UsuarioController {
         header("Location: index.php?action=usuario_index");
     }
 
+    public function edit($codigo) {
+        $usuario = new Usuario();
+        $data = $usuario->getById($codigo);
+        include __DIR__ . '/../views/usuario/edit.php';
+    }
+
+    public function update($codigo, $nombre, $telefono, $direccion) {
+        $usuario = new Usuario();
+        $usuario->update($codigo, $nombre, $telefono, $direccion);
+        header("Location: index.php?action=usuario_index");
+    }
+
     public function delete($codigo) {
         $usuario = new Usuario();
         $usuario->delete($codigo);
